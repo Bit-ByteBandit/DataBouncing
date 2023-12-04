@@ -21,7 +21,6 @@ function Send-CustomRequest {
         "Client-IP" = "clip.$Url.$Domain"
         "Referer" = "ref.$Url.$Domain"
         "From" = "root@from.$Url.$Domain"
-        "Test" = "cookies"
     }
 
     try {
