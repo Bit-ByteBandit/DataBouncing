@@ -17,9 +17,18 @@ function Convert-FileToHexChunks {
         # Create a PSObject to store the chunks
         $hexObject = New-Object PSObject
 
+        # Randomly select a separator for the total number of segments
+        $totalSeparator = Get-Random -InputObject @('G', 'H', 'I')
+        $hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ($chunks.Count.ToString() + $totalSeparator)
+
         for ($i = 0; $i -lt $chunks.Count; $i++) {
+            # Randomly select a separator from G, H, I for each chunk
+            $separator = Get-Random -InputObject @('G', 'H', 'I')
+
             # Add each chunk as a property to the object
-            $hexObject | Add-Member -MemberType NoteProperty -Name ($i + 1) -Value $chunks[$i].Value
+            # Prepend each chunk with its segment number and a random separator
+            $segmentLabel = ($i + 1).ToString() + $separator
+            $hexObject | Add-Member -MemberType NoteProperty -Name ($i + 2) -Value ($segmentLabel + $chunks[$i].Value)
         }
 
         # Return the object
@@ -29,7 +38,3 @@ function Convert-FileToHexChunks {
         Write-Error "An error occurred: $_"
     }
 }
-
-# Example usage:
-# $hexObject = Convert-FileToHexChunks -FilePath "C:\path\to\your\file.txt"
-# $hexObject
