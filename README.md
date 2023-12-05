@@ -1,7 +1,7 @@
 # DataBouncing
 
 ```
-interactsh-client -v -o Logs.txt
+interactsh-client -v -o /root/DataBouncing/logs.txt
 ```
 
 
