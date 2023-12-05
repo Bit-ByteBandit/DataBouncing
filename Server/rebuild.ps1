@@ -47,7 +47,7 @@ function recreate {
 	     $lines = $data -split "`r`n"
 
 		foreach($line in $lines) {
-		    if ($line -match "^-.*-$") {
+		    if ($line -match "^j.*j$") {
 		        $instructions = $line
 		        break
 		    }
