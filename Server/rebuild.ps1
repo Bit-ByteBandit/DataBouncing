@@ -103,7 +103,7 @@ function recreate {
 	}
 
 	
-	$secrets = (find-secret -FilePath ./logs.txt -Regex 'xregex') 
+	$secrets = (find-secret -FilePath ./logs.txt -Regex '$regex') 
 	$secrets > ./logs.txt
 	
 	$rawHex, $file = assemble -filePath ./logs.txt
