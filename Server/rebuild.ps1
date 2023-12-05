@@ -4,7 +4,7 @@ Function Find-secret {
         [string]$FilePath,
 
         [Parameter(Mandatory = $true)]
-        [string]$XRegex
+        [string]$Regex
     )
 
     # Ensure the file exists
@@ -18,7 +18,7 @@ Function Find-secret {
 
     # Read the file and process each line
     Get-Content $FilePath | ForEach-Object {
-        If ($_ -Match "$XRegex\.([^\.]+)\.") {
+        If ($_ -Match "$Regex\.([^\.]+)\.") {
             # Add matched string in uppercase
             $MatchesFound += $Matches[1].ToUpper()
         }
