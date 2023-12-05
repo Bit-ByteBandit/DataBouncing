@@ -45,8 +45,30 @@ function recreate {
 	 
 	     # Splitting the data into lines by newlines
 	     $lines = $data -split "`r`n"
-	 
-	     # Removing the first line (contains the total count, not needed for processing)
+
+		foreach($line in $lines) {
+		    if ($line -match "^-.*-$") {
+		        $instructions = $line
+		        break
+		    }
+		}
+
+
+		# Remove the leading and trailing hyphens
+		$trimmedInstructions = $instructions.Trim('-')
+		
+		# Split the string by 'G', 'H', or 'I'
+		$split = [regex]::Split($trimmedInstructions, '[GHI]')
+		
+		# Assign the number of segments to a variable
+		$numberOfSegments = [int]$split[0]
+		
+		# Convert the hex string to ASCII for the file extension
+		$hexString = $split[1]
+		$file = -join ([char[]]($hexString -split '(..)' | Where-Object { $_ -ne '' } | ForEach-Object { [convert]::ToInt32($_, 16) } | ForEach-Object { [char]$_ }))
+
+
+  	     # Removing the first line (contains the total count, not needed for processing)
 	     $lines = $lines[1..($lines.Length - 1)]
 	 
 	     # Sorting the lines based on the number at the beginning
@@ -54,8 +76,9 @@ function recreate {
 	 
 	     # Extracting and concatenating the strings without spaces
 	     $result = ($sortedLines | ForEach-Object { $_ -replace '^[0-9]+[GHI]', '' }) -join ''
-	 
-	     return $result
+
+  	     
+	     return $result, $file
 	 }
 	 
 	 
@@ -80,8 +103,14 @@ function recreate {
 	}
 
 	
-find-secret -FilePath ./logs.txt -Regex '$regex'
+	$secrets = (find-secret -FilePath ./logs.txt -Regex 'xregex') 
+	$secrets > ./logs.txt
+	
+	$rawHex, $file = assemble -filePath ./logs.txt
+	
+	$decoded = convert-hexToAscii $rawHex
 
-convert-hexToAscii (assemble -filepath ./raw.txt)
+	# Save the decoded content to a file with the extracted extension
+	$decoded | Out-File -FilePath $file -Encoding Default
 
 }
