@@ -1,5 +1,7 @@
 # DataBouncing
 
+Use this [BUILD](https://github.com/Unit-259/DataBouncing/blob/main/Resources/interactshBuild.sh).
+
 ```
 interactsh-client -v -o /root/DataBouncing/logs.txt
 ```
