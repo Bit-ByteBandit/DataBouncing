@@ -46,6 +46,8 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
       You have the option of using our GUI as well. The following one liner will open it on any pc for you instantly. 
       `irm unit259.fyi/dbgui | iex`
 
+      ![DataBouncing GUI](https://github.com/Unit-259/DataBouncing/blob/main/Resources/theDbGui.png?raw=true)
+
 2. **Data Reconstruction with `recreate.ps1`**:
       - provide regex key
 
