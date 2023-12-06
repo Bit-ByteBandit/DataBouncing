@@ -1,0 +1,27 @@
+#!/bin/bash
+
+tmux_session_exists() {
+    tmux has-session -t "$1" 2>/dev/null
+}
+
+tmux_session() {
+    local session_name="$1"
+
+    if tmux_session_exists "$session_name"; then
+        tmux attach-session -t "$session_name"
+    else
+        tmux new-session -d -s "$session_name"
+        tmux split-window -v
+        tmux select-pane -t 1
+        tmux split-window -h
+		tmux select-pane -t 0
+        tmux resize-pane -t 0 -y 2
+        tmux select-pane -t 1
+        tmux resize-pane -x 100
+    fi
+}
+tmux_session "PANEL"
+tmux send-keys -t 0 "bash ./bounce.sh" C-m
+tmux send-keys -t 1 "pwsh" C-m
+tmux send-keys -t 2 "tail -f /root/logfile.log" C-m
+tmux attach-session -t PANEL
