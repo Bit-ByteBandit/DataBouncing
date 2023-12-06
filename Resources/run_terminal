@@ -14,7 +14,7 @@ tmux_session() {
         tmux split-window -v
         tmux select-pane -t 1
         tmux split-window -h
-		tmux select-pane -t 0
+        tmux select-pane -t 0
         tmux resize-pane -t 0 -y 2
         tmux select-pane -t 1
         tmux resize-pane -x 100
