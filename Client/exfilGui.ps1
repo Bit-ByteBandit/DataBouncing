@@ -4,8 +4,9 @@ Add-Type -AssemblyName System.Windows.Forms
 # Create the form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'DataBounce'
-$form.Size = New-Object System.Drawing.Size(300, 300)
-$form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedSingle  # Set form border style to FixedSingle
+$form.Size = New-Object System.Drawing.Size(300, 350)  # Increased the form height to accommodate the new button
+$form.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedSingle
+$form.MaximizeBox = $false
 $form.BackColor = [System.Drawing.Color]::FromArgb(33, 33, 33)
 $form.ForeColor = [System.Drawing.Color]::White
 
@@ -90,6 +91,18 @@ $executeButton.Add_Click({
     [System.Windows.Forms.MessageBox]::Show("Regex: $regex`nDomain: $domain`nURL: $url`nFile Path: $filePath")
 })
 
+# Create 'InteractSh Web Client' button
+$interactShButton = New-Object System.Windows.Forms.Button
+$interactShButton.Text = 'InteractSh Web Client'
+$interactShButton.Location = New-Object System.Drawing.Point(10, 230)  # Adjust the Y position as needed
+$interactShButton.Size = New-Object System.Drawing.Size(260, 23)
+$interactShButton.BackColor = [System.Drawing.Color]::FromArgb(45, 45, 45)
+$interactShButton.ForeColor = [System.Drawing.Color]::White
+
+$interactShButton.Add_Click({
+    Start-Process "https://app.interactsh.com/#/"
+})
+
 # Add controls to the form
 $form.Controls.Add($regexLabel)
 $form.Controls.Add($regexInput)
@@ -100,6 +113,7 @@ $form.Controls.Add($urlInput)
 $form.Controls.Add($uploadButton)
 $form.Controls.Add($filePathInput)
 $form.Controls.Add($executeButton)
+$form.Controls.Add($interactShButton)  # Add the 'InteractSh Web Client' button
 
 # Show the form
 $form.ShowDialog()
