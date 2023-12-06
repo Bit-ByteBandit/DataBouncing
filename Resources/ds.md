@@ -115,3 +115,30 @@ Data Bouncing poses a significant threat to organizations across various sectors
 
 For further information on Data Bouncing and its implications, please refer to the following resource: [Data Bouncing Techniques](https://thecontractor.io/DataBouncing).
 
+
+# Analysis: Impact of Reverse Proxy Headers and Strict Server Headers on Data Bouncing Techniques
+
+## Overview
+This document provides a detailed analysis of how reverse proxy headers and strict server headers might impact the functionality of data bouncing techniques that involve DNS lookups against HTTP header types.
+
+## Impact of Reverse Proxy Headers
+### Description
+- Reverse proxy headers could significantly influence the data bouncing process.
+- These headers are often modified or scrubbed as packets pass through reverse proxies.
+
+### Potential Effects
+- **Modification of Headers:** If specific header information, crucial for the data bouncing process, gets altered or removed, the effectiveness of the technique might be compromised.
+- **Altered IP Addresses:** Reverse proxies might change source IP addresses to the proxy's IP, potentially disrupting the data flow expected in the data bouncing technique.
+- **Addition of Headers:** Headers like `X-Forwarded-For` could be added, which might not be anticipated by the data bouncing scripts.
+
+## Influence of Strict Server Headers
+### Server Policies
+- Implementing strict server headers means the server might reject or ignore headers that don't conform to predefined criteria.
+- This includes custom headers or headers that have been tampered with.
+
+### Impact on Data Bouncing Method
+- **Header Manipulation:** The data bouncing method involves manipulating HTTP headers for transferring data, which could be flagged or blocked by strict policies.
+- **Server's Response to Unrecognized Headers:** If the server is configured to drop or ignore such headers, the data bouncing method may not work as intended.
+
+## Conclusion
+The interaction between data bouncing techniques and network configurations, especially concerning reverse proxy headers and strict server headers, is complex. The effectiveness of the data bouncing technique in the presence of these configurations largely depends on the specific manipulations of HTTP headers and the corresponding response of the network or server configurations.
