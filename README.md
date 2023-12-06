@@ -1,7 +1,11 @@
 # Data Bouncing - PowerShell Version
 
+<img src="https://github.com/Unit-259/DataBouncing/blob/main/Resources/dataBouncing.png" width="1000" alt="DataBounce banner">
+
 ## Overview
 Data Bouncing is a technique for transmitting data between two endpoints using DNS lookups and HTTP header manipulation. This PowerShell version encapsulates core functionalities of data bouncing, including reconnaissance, data exfiltration, and file reassembly, based on a proof of concept (PoC) by John and Dave. More details can be found at [The Contractor](https://thecontractor.io/DataBouncing).
+
+This project owes a significant debt of gratitude to the pioneering efforts and inventive ideas of John and Dave, whose original concepts laid the groundwork for our development. Their innovative approach to data bouncing and its applications in security and networking have been a guiding light for us. We encourage you to delve deeper into their work and insights, available at The Contractor, a treasure trove of knowledge in this domain. Their contributions to the field have not only inspired our work but have also enriched the broader community of technology enthusiasts and security professionals. We extend our heartfelt thanks to them for leading the way and for continuing to push the boundaries of what's possible.
 
 ## Components
 The project consists of two main scripts:
