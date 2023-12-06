@@ -29,7 +29,7 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
 
    Be sure to thank InfoSecREDD for this isntallation script. It couldn't be easier to implement because of him.
 
-
+   <img src="https://github.com/Unit-259/DataBouncing/blob/main/Resources/interactShBuild.gif" width="600" alt="Description of GIF">
 
    Start the InteractSh Client on your listener machine:
 
