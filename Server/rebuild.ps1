@@ -105,13 +105,13 @@ function recreate {
 
 	
 	$secrets = (find-secret -FilePath ./logs.txt -Regex '$regex') 
-	$secrets > ./logs.txt
+	$secrets > ./raw.txt
 	
-	$rawHex, $file = assemble -filePath ./logs.txt
+	$result, $ext, $saveName, $numSegs = assemble -filePath ./raw.txt
 	
-	$decoded = convert-hexToAscii $rawHex
+	#$decoded = convert-hexToAscii $rawHex
 
 	# Save the decoded content to a file with the extracted extension
-	$decoded | Out-File -FilePath $file -Encoding Default
+	$result | Out-File -FilePath "$saveName$ext" -Encoding UTF8
 
 }
