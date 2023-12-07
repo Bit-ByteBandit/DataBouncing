@@ -55,20 +55,19 @@ function recreate {
 
 
 		# Remove the leading and trailing hyphens
-		$trimmedInstructions = $instructions.Trim('j')
+		$trimmedInstructions = $instructions.Trim('J')
 		
 		# Split the string by 'G', 'H', or 'I'
 		$split = [regex]::Split($trimmedInstructions, '[GHI]')
 		
-		# Assign the number of segments to a variable
-		$numberOfSegments = [int]$split[0]
+		$numSegs   = [int]$split[0]
 		
-		# Convert the hex string to ASCII for the file extension
 		$hexString = $split[1]
 
-		$hexName = $split[2]
+		$hexName   = $split[2]
 
-		$file = Convert-HexToAscii $hexString
+		$ext       = Convert-HexToAscii $hexString
+		$saveName  = Convert-HexToAscii $hexName
 
   	     # Removing the first line (contains the total count, not needed for processing)
 	     $lines = $lines[1..($lines.Length - 1)]
@@ -77,10 +76,10 @@ function recreate {
 	     $sortedLines = $lines | Sort-Object { [int]($_ -replace '[GHI].*$', '') }
 	 
 	     # Extracting and concatenating the strings without spaces
-	     $result = ($sortedLines | ForEach-Object { $_ -replace '^[0-9]+[GHI]', '' }) -join ''
-
+	     $hexContent = ($sortedLines | ForEach-Object { $_ -replace '^[0-9]+[GHI]', '' }) -join ''
+	     $result = Convert-HexToAscii $hexContent 
   	     
-	     return $result, $file
+	     return $result, $ext, $saveName, $numSegs
 	 }
 	 
 	 
