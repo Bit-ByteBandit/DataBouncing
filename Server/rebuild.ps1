@@ -55,7 +55,7 @@ function recreate {
 
 
 		# Remove the leading and trailing hyphens
-		$trimmedInstructions = $instructions.Trim('-')
+		$trimmedInstructions = $instructions.Trim('j')
 		
 		# Split the string by 'G', 'H', or 'I'
 		$split = [regex]::Split($trimmedInstructions, '[GHI]')
@@ -65,8 +65,10 @@ function recreate {
 		
 		# Convert the hex string to ASCII for the file extension
 		$hexString = $split[1]
-		$file = -join ([char[]]($hexString -split '(..)' | Where-Object { $_ -ne '' } | ForEach-Object { [convert]::ToInt32($_, 16) } | ForEach-Object { [char]$_ }))
 
+		$hexName = $split[2]
+
+		$file = Convert-HexToAscii $hexString
 
   	     # Removing the first line (contains the total count, not needed for processing)
 	     $lines = $lines[1..($lines.Length - 1)]
