@@ -79,7 +79,7 @@ function recreate {
 	     $hexContent = ($sortedLines | ForEach-Object { $_ -replace '^[0-9]+[GHI]', '' }) -join ''
 	     $result = Convert-HexToAscii $hexContent 
   	     
-	     return $result, $ext, $saveName, $numSegs
+	     return $result, $ext, $saveName
 	 }
 	 
 	 
@@ -107,11 +107,11 @@ function recreate {
 	$secrets = (find-secret -FilePath ./logs.txt -Regex '$regex') 
 	$secrets > ./raw.txt
 	
-	$result, $ext, $saveName, $numSegs = assemble -filePath ./raw.txt
+	$result, $ext, $saveName = assemble -filePath ./raw.txt
 	
 	#$decoded = convert-hexToAscii $rawHex
 
 	# Save the decoded content to a file with the extracted extension
-	$result | Out-File -FilePath "$saveName$ext" -Encoding UTF8
+	$result | Out-File -FilePath "$saveName.$ext" -Encoding UTF8
 
 }
