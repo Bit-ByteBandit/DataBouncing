@@ -1,4 +1,4 @@
-import-module /root/DataBouncing/Server/watchLogs.ps1
+import-module /root/DataBouncing/Server/rebuild.ps1
 
 function watchLogs {
     param (
