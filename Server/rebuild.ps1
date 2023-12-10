@@ -104,7 +104,7 @@ function recreate {
 	}
 
 	
-	$secrets = (find-secret -FilePath ./logs.txt -Regex '$regex') 
+	$secrets = (find-secret -FilePath ./logs.txt -Regex "$regex") 
 	$secrets > ./raw.txt
 	
 	$result, $ext, $saveName = assemble -filePath ./raw.txt
