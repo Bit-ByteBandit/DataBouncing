@@ -35,4 +35,4 @@ function watchLogs {
 }
 
 # Example usage of the function
-Check-LogFile
+# Check-LogFile
