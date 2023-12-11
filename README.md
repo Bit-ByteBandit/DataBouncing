@@ -8,14 +8,17 @@ Data Bouncing is a technique for transmitting data between two endpoints using D
 This project owes a significant debt of gratitude to the pioneering efforts and inventive ideas of John and Dave, whose original concepts laid the groundwork for our development. Their innovative approach to data bouncing and its applications in security and networking have been a guiding light for us. We encourage you to delve deeper into their work and insights, available at The Contractor, a treasure trove of knowledge in this domain. Their contributions to the field have not only inspired our work but have also enriched the broader community of technology enthusiasts and security professionals. We extend our heartfelt thanks to them for leading the way and for continuing to push the boundaries of what's possible.
 
 ## Components
-The project consists of two main scripts:
-- `exfil.ps1`: Manages data exfiltration.
-- `recreate.ps1`: Handles reassembly of the exfiltrated data.
 
-### `exfil.ps1`
+<img src="https://github.com/Unit-259/DataBouncing/blob/main/Resources/dbheroes.png" width="1000" alt="DataBounce banner">
+
+The project consists of two main scripts:
+- `nightCrawler.ps1`: Manages data exfiltration.
+- `deadPool.ps1`: Handles reassembly of the exfiltrated data.
+
+### `nightCrawler.ps1`
 This script encodes a file into hexadecimal chunks and sends each chunk as part of a domain name in an HTTP request header. It's used for exfiltrating data from restrictive networks.
 
-### `recreate.ps1`
+### `deadPool.ps1`
 Processes data received from `exfil.ps1`, finding patterns in logs, assembling data chunks, and converting them back to their original form.
 
 ## Usage
@@ -39,7 +42,7 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
 
 
 ### Running the Scripts
-1. **Data Exfiltration with `exfil.ps1`**:
+1. **Data Exfiltration with `nightCrawler.ps1`**:
       - provide url for OOB Lister
       - provide filepath of target exfil data
 
@@ -48,8 +51,8 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
 
       ![DataBouncing GUI](https://github.com/Unit-259/DataBouncing/blob/main/Resources/theDbGui.png?raw=true)
 
-2. **Data Reconstruction with `recreate.ps1`**:
-      - provide regex key
+2. **Data Reconstruction with `deadpool.ps1`**:
+      - run it
 
 ## Notes
 - Remember to replace placeholders like 'your-regex', 'your-domain.oast.online', etc., with actual values relevant to your setup.
