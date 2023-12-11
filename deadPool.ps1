@@ -1,4 +1,4 @@
-function Recreate-Secrets {
+function Regenerate {
     param (
         [string]$regex
     )
