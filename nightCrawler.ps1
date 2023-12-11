@@ -1,4 +1,4 @@
-function exfil {
+function vanish {
     param (
         [string]$regex,
         [string]$domain,
