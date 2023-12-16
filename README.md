@@ -30,6 +30,12 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
 1. **Listener Setup**:
    Use [InteractSh Web Client](https://app.interactsh.com/#/) or the [Build Script](https://github.com/Unit-259/DataBouncing/blob/main/Resources/interactshBuild.sh) with Ubuntu 22.04.
 
+   You can use this single one liner to download, install, and run InteractSh on your server: 
+
+```bash
+   wget "https://unit259.fyi/interactshbuild" && chmod +x interactshbuild && ./interactshbuild
+```
+
    Be sure to thank InfoSecREDD for this isntallation script. It couldn't be easier to implement because of him.
 
    <img src="https://github.com/Unit-259/DataBouncing/blob/main/Resources/interactShBuild.gif" width="600" alt="Description of GIF">
