@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-#  REDD's Quick Interactsh Installer
 #    v1.2
 #
 
