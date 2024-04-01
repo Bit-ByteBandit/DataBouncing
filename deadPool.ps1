@@ -1,6 +1,7 @@
 function Regenerate {
     param (
-        [string]$regex
+        [string]$regex,
+        [string]$File
     )
 
     function Find-Secret {
@@ -114,7 +115,7 @@ function Regenerate {
         }
     }
 
-    $secrets = (Find-Secret -FilePath ./logs.txt -Regex $regex)
+    $secrets = (Find-Secret -FilePath $File -Regex $regex)
     $secrets | Out-File -FilePath ./raw.txt -Encoding UTF8
 
     $result, $ext, $saveName, $numSegs = Assemble-Instructions -FilePath ./raw.txt
@@ -125,16 +126,17 @@ function Regenerate {
 
 
 
+
 function watchLogs {
     param (
-        [string]$LogFilePath = "logs.txt",
+        [string]$File = "logs.txt",
         [string]$IdsFilePath = "file-IDs.txt"
     )
 
     while ($true) {
         # Check if the log file exists
-        if (-Not (Test-Path $LogFilePath)) {
-            Write-Host "Log file not found: $LogFilePath"
+        if (-Not (Test-Path $File)) {
+            Write-Host "Log file not found: $File"
             return
         }
 
@@ -149,7 +151,7 @@ function watchLogs {
         $fileIds = $fileContent -split '\r?\n'
 
         # Read the log file
-        $logFileContent = Get-Content $LogFilePath
+        $logFileContent = Get-Content $File
 
         # Initialize variables
         $segments = $null
@@ -186,7 +188,7 @@ function watchLogs {
         while ($foundSegments.Count -lt $segments) {
             for ($i = 1; $i -le $segments; $i++) {
                 if ($i -notin $foundSegments) {
-                    $logFileContent = Get-Content $LogFilePath
+                    $logFileContent = Get-Content $File
                     $segmentPattern = "$fileid\.$i"
                     $segmentFound = $logFileContent | Where-Object { $_ -match $segmentPattern }
                     if ($segmentFound) {
@@ -204,5 +206,4 @@ function watchLogs {
         Recreate-Secrets -regex "$fileid"
     }
 }
-
 
